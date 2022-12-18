@@ -129,7 +129,7 @@ let directoryTree: TreeNode = {
     {
       id: "f1a68be9-73ad-4fc3-81d2-00600fbdf016",
       type: "file",
-      name: "CONTIBUTING.md",
+      name: "CONTRIBUTING.md",
     },
     {
       id: "5d245f41-4ca2-4198-86c2-0759b89206cf",
@@ -168,10 +168,16 @@ const deleteById = (node: TreeNode, id: string): TreeNode => {
 };
 
 const searchByName = (node: TreeNode, name: string): TreeNode[] => {
-  const filteredNodeTree = node.children?.filter((item) => item.name === name);
-  console.log(filteredNodeTree, node);
-  if (filteredNodeTree) return filteredNodeTree;
-  return [];
+  let list = []
+  if (node.name.includes(name)) {
+    list.push(node)
+  }
+  if (node.children) {
+    node.children.forEach((child) => {
+      list.push(...searchByName(child, name))
+    })
+  }
+  return list
 };
 
 // Exports
