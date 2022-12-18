@@ -1,25 +1,25 @@
 import { Title } from "solid-start";
 import Api from "../api/api";
-import { createSignal } from "solid-js";
-import { createQuery } from "@tanstack/solid-query";
+import { createResource, createSignal, For } from "solid-js";
 
-const fetchDir = async () => {
-  return await Api.getDirectoryTree();
+const fetchDir = async (name: string) => {
+  return await Api.searchByName(name);
 };
 
 export default function Home() {
   const [searchInput, setSearchInput] = createSignal("");
-  const query = createQuery(() => ["todos", searchInput()], fetchDir);
+  const [query] = createResource(searchInput, () => fetchDir(searchInput()));
 
   const onInput = (event: unknown) => {
     setSearchInput(event.currentTarget.value);
   };
+
   return (
     <main>
-      <Title>Hello World</Title>
       <label>file:</label>
-      <input type="text" value={searchInput()} onInput={onInput} />
-      <div>name: {searchInput()}</div>
+      <input type="text" value={searchInput()} onInput={(e) => onInput(e)} />
+      <span>{query.loading && "loading"}</span>
+      <For each={query()}>{(item) => <p>{item.name}</p>}</For>
     </main>
   );
 }

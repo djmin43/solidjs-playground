@@ -167,20 +167,11 @@ const deleteById = (node: TreeNode, id: string): TreeNode => {
   return node;
 };
 
-const searchById = (node: TreeNode, id: string): TreeNode => {
-  if (node.children) {
-    return {
-      ...node,
-      children: node.children
-        .map((child) => {
-          if (child.id === id) return null;
-          if (child.type === "folder") return deleteById(child, id);
-          return child;
-        })
-        .filter(Boolean) as TreeNode[],
-    };
-  }
-  return node;
+const searchByName = (node: TreeNode, name: string): TreeNode[] => {
+  const filteredNodeTree = node.children?.filter((item) => item.name === name);
+  console.log(filteredNodeTree, node);
+  if (filteredNodeTree) return filteredNodeTree;
+  return [];
 };
 
 // Exports
@@ -189,5 +180,8 @@ export default {
   deleteById: async (id: string) => {
     directoryTree = deleteById(directoryTree, id);
     return directoryTree;
+  },
+  searchByName: async (name: string) => {
+    return searchByName(directoryTree, name);
   },
 };
