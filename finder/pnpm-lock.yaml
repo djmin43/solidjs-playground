@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@solidjs/meta': ^0.28.0
   '@solidjs/router': ^0.5.0
+  prettier: ^2.8.1
   solid-js: ^1.6.2
   solid-start: ^0.2.0
   solid-start-node: ^0.2.0
@@ -18,6 +19,7 @@ dependencies:
   undici: 5.14.0
 
 devDependencies:
+  prettier: 2.8.1
   solid-start-node: 0.2.7_5rcqlkztk6lvdy7aksayuiud3e
   typescript: 4.9.4
   vite: 3.2.5
@@ -2399,6 +2401,12 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /pretty-bytes/6.0.0:
     resolution: {integrity: sha512-6UqkYefdogmzqAZWzJ7laYeJnaXDy2/J+ZqiiMtS7t7OfpXWTlaeGMwX8U6EFvPV/YWWEKRkS8hKS4k60WHTOg==}
