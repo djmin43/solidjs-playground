@@ -1,4 +1,3 @@
-import { Title } from "solid-start";
 import Api from "../api/api";
 import { createResource, createSignal, For } from "solid-js";
 
@@ -18,7 +17,6 @@ export default function Home() {
     <main>
       <label>file:</label>
       <input type="text" value={searchInput()} onInput={(e) => onInput(e)} />
-      <span>{query.loading && "loading"}</span>
       <For each={query()}>{(item) => <p>{item.name}</p>}</For>
     </main>
   );
