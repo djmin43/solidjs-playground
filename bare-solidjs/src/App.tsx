@@ -1,6 +1,5 @@
 import {
   Component,
-  createEffect,
   createResource,
   createSignal,
   For,

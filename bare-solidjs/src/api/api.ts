@@ -168,7 +168,7 @@ const deleteById = (node: TreeNode, id: string): TreeNode => {
 };
 
 const searchByName = (node: TreeNode, name: string): TreeNode[] => {
-  let list = []
+  let list: TreeNode[] = []
   if (node.name.includes(name)) {
     list.push(node)
   }
