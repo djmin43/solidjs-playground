@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  prettier: ^2.8.1
   solid-js: ^1.5.1
   typescript: ^4.8.2
   vite: ^3.0.9
@@ -11,7 +10,6 @@ dependencies:
   solid-js: 1.5.1
 
 devDependencies:
-  prettier: 2.8.1
   typescript: 4.8.2
   vite: 3.0.9
   vite-plugin-solid: 2.3.0_solid-js@1.5.1+vite@3.0.9
@@ -780,12 +778,6 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: true
-
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
     dev: true
 
   /resolve/1.22.1:
