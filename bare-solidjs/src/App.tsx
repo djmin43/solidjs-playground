@@ -1,12 +1,6 @@
-import {
-  Component,
-  createEffect,
-  createResource,
-  createSignal,
-  For,
-  Show,
-} from "solid-js";
+import { createResource, createSignal } from "solid-js";
 import Api from "./api/api";
+import { File } from "./components/File";
 
 const fetchDir = async (name: string) => {
   return await Api.searchByName(name);
@@ -21,15 +15,24 @@ const App = () => {
   };
 
   return (
-    <main>
-      <label>file:</label>
-      <input type="text" value={searchInput()} onInput={(e) => onInput(e)} />
-      <span>{query.loading && "loading"}</span>
+    <main class={"main-container"}>
+      <h2>search files or dirs</h2>
+      <div class={"sub-container"}>
+        <div>
+          <label>input: </label>
+          <input
+            type="text"
+            value={searchInput()}
+            onInput={(e) => onInput(e)}
+          />
+        </div>
+      </div>
+      <div class={"sub-container"}>
         {searchInput().length !== 0 &&
-            <div>
-                {query()?.map((item) => <p>{item.name}</p>)}
-            </div>
-        }
+          query()?.map((node) => (
+            <File searchInput={searchInput()} node={node} />
+          ))}
+      </div>
     </main>
   );
 };

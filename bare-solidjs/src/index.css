@@ -7,7 +7,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+/*App*/
+
+.main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 48px;
+  row-gap: 8px;
+}
+
+.sub-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.included {
+  background: darkcyan;
+  color: white;
+}
+
+.file-container {
+  display: flex;
+  column-gap: 4px;
 }
