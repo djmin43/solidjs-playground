@@ -2,6 +2,12 @@
 
 This is a sample solution for file explorer
 
+## Tech stack
+
+- **Typescript**
+- **Solidjs**
+- **Vite**
+
 ## Quick start
 
 ```sh
