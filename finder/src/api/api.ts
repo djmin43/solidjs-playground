@@ -129,7 +129,7 @@ let directoryTree: TreeNode = {
     {
       id: "f1a68be9-73ad-4fc3-81d2-00600fbdf016",
       type: "file",
-      name: "CONTIBUTING.md",
+      name: "CONTRIBUTING.md",
     },
     {
       id: "5d245f41-4ca2-4198-86c2-0759b89206cf",
@@ -149,38 +149,22 @@ let directoryTree: TreeNode = {
   ],
 };
 
-// Helpers
-// Finds a node by ID and applies a mutation to it
-const deleteById = (node: TreeNode, id: string): TreeNode => {
-  if (node.children) {
-    return {
-      ...node,
-      children: node.children
-        .map((child) => {
-          if (child.id === id) return null;
-          if (child.type === "folder") return deleteById(child, id);
-          return child;
-        })
-        .filter(Boolean) as TreeNode[],
-    };
-  }
-  return node;
-};
-
 const searchByName = (node: TreeNode, name: string): TreeNode[] => {
-  const filteredNodeTree = node.children?.filter((item) => item.name === name);
-  console.log(filteredNodeTree, node);
-  if (filteredNodeTree) return filteredNodeTree;
-  return [];
+  let list = [];
+  if (node.name.includes(name)) {
+    list.push(node);
+  }
+  if (node.children) {
+    node.children.forEach((child) => {
+      list.push(...searchByName(child, name));
+    });
+  }
+  return list;
 };
 
 // Exports
 export default {
   getDirectoryTree: async () => directoryTree,
-  deleteById: async (id: string) => {
-    directoryTree = deleteById(directoryTree, id);
-    return directoryTree;
-  },
   searchByName: async (name: string) => {
     return searchByName(directoryTree, name);
   },
