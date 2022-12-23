@@ -1,19 +1,16 @@
-import { Title } from "solid-start";
-import Counter from "~/components/Counter";
-
 export default function Home() {
   return (
     <main>
-      <Title>Hello World</Title>
-      <h1>Hello world!</h1>
-      <Counter />
-      <p>
-        Visit{" "}
-        <a href="https://start.solidjs.com" target="_blank">
-          start.solidjs.com
-        </a>{" "}
-        to learn how to build SolidStart apps.
-      </p>
+        <h1>bug reproduction</h1>
+
     </main>
   );
+}
+
+const numberList = [0, 1, 2, 3, 4, 5, 6, 7]
+
+const api = {
+    findNumber: async (value: number) => {
+        return numberList.includes(value)
+    }
 }
