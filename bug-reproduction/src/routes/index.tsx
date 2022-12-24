@@ -1,8 +1,16 @@
 import {createResource, createSignal, JSX} from "solid-js";
+import axios from "axios";
 
-const fetchChar = (value: string) => {
-    return api.findChar(value)
+const fetchChar = async (value: string) => {
+    try {
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value}`)
+        return res.data.count
+    } catch(e) {
+       //  This is just a minimal error handling for testing purpose
+        return 'no data found'
+    }
 }
+
 
 export default function Home() {
 
@@ -24,10 +32,4 @@ export default function Home() {
   );
 }
 
-const charList = ["a", "b", "c", "d", "e"]
 
-const api = {
-    findChar: async (value: string) => {
-        return charList.find(element => element === value)
-    }
-}
